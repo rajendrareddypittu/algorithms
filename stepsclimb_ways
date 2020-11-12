@@ -1,0 +1,30 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+#print("Hello world")
+def bestpath(target,options):
+    min_ways_tgt=[0]*(target+1)
+    path=['']*(target+1)
+    for ind in range(0,target+1):
+        for step in options:
+            #print("ind,step",ind,step)
+            if ind+step <=target:
+                if min_ways_tgt[ind+step]==0:
+                    min_ways_tgt[ind+step]=min_ways_tgt[ind]+1
+                    path[ind+step]=str(path[ind])+str(step)
+                    
+                else:    
+                    min_ways_tgt[ind+step]=min(min_ways_tgt[ind+step],min_ways_tgt[ind]+1)
+                    if min_ways_tgt[ind+step] > min_ways_tgt[ind]+1:
+                        path[ind+step]=str(path[ind])+str(step)
+
+
+                        
+                        
+    print (path)
+    return min_ways_tgt[target]
+    
+target=7
+options=[1,2,3]
+bestways=bestpath(target,options)
+print(bestways)
+
