@@ -1,0 +1,8 @@
+
+cd existing-project
+git init
+git add --all
+git commit -m "Initial Commit"
+git remote add origin https:
+
+git push -u origin HEAD:dev  -- code will be pused into dev branch
