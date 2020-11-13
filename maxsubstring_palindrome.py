@@ -46,7 +46,8 @@ def substrpalindrom(arr):
         if len(ele) == 1:
             status=True
         else:    
-            status,max_palind_substr=ispalindrom(ele,max_palind_substr)
+            if len(ele)>len(max_palind_substr):
+                status,max_palind_substr=ispalindrom(ele,max_palind_substr)
         #print(ele,status)    
             
         
