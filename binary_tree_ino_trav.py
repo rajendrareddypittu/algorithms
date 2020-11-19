@@ -1,69 +1,49 @@
 class Node:
-    def __init__(self,value):
-        self.value=value
+    def __init__(self,val):
+        self.val=val
         self.left=None
         self.right=None
-class Btree(Node):
-    def __init__(self):
-        self.root=None
-    def insert_node(self,value):
-        if self.root==None:
-            self.root=Node(value)
-        else:
-            bt_insert(self.root,value)
-    def print_tree(self):
-        if self.root==None:
-            print("Tree is empty")
-        else:
-            bt_print_tree(self.root)
-            
-def bt_insert(root,value):
-    if value <root.value:
+        
+def bt_insert(root,val):
+    if root==None:
+        root=Node(val)
+    elif val <root.val :
         if root.left!=None:
-            bt_insert(root.left,value)
+            bt_insert(root.left,val)
         else:
-            root.left=Node(value)
-    elif value > root.value:
+            root.left=Node(val)
+    elif val>root.val:
         if root.right!=None:
-            bt_insert(root.right,value)
+            bt_insert(root.right,val)
         else:
-            root.right=Node(value)
+            root.right=Node(val)
+            
     else:
-        print("duplicate entry")
-
-def bt_print_tree(root):
+        print("Duplicate Entry",val)
+def bt_print(root):
     if root==None:
         return
-    bt_print_tree(root.left)
-    print(root.value)
-    bt_print_tree(root.right)
+    print(root.val)
+    bt_print(root.left)
+    bt_print(root.right)
     
-   
-    
-    
-    
-        
-    
-
- 
-    
-
-r=Btree()
-
-r.print_tree()
-
-r.insert_node(27)
-r.insert_node(14)
-r.insert_node(35)
-r.insert_node(10)
-r.insert_node(19)
-r.insert_node(31)
-r.insert_node(42)
-r.print_tree()
-
-pre: [27, 14, 10, 19, 35, 31, 42]
-post: [10, 19, 14, 31, 42, 35, 27]
-in: [10, 14, 19, 27, 31, 35, 42]
+root=Node(27)
+bt_insert(root,14)
+bt_insert(root,35)
+bt_insert(root,10)
+bt_insert(root,19)
+bt_insert(root,31)
+bt_insert(root,42)
+bt_print(root)
 
 
-
+            o/p
+    --------------
+    27
+14
+10
+19
+35
+31
+42
+>
