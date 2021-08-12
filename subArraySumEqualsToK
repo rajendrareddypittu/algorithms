@@ -1,0 +1,18 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        hashTable={}
+        counter=0
+        runningSum=0
+        for ele in nums:
+            runningSum+=ele
+            if runningSum-k in hashTable:
+                counter+=hashTable[runningSum-k]
+            if runningSum in hashTable:
+                hashTable[runningSum]=hashTable[runningSum]+1
+            else:
+                hashTable[runningSum]=1
+            #print(hashTable)    
+        if k in hashTable:
+            counter+=hashTable[k]
+        return counter       
+             
